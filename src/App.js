@@ -1,23 +1,37 @@
-import logo from './logo.svg';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+
+const APIData = () => {
+
+  const[apiCall, setAPICall] = useState([]);
+
+  const getAPIData = () => {
+    axios.get("http://localhost:8080/users").then(response => {
+      console.log(response);
+      setAPICall(response.data)
+    })
+  }
+
+  useEffect(() => {
+    getAPIData();
+  }, [])
+
+  return apiCall.map((apiCall, index) => {
+    
+    return(
+      <div key={index}>
+        <h1 className="name">{apiCall.firstName} {apiCall.lastName}</h1>
+        <p>Address: {apiCall.addressLine}</p>
+      </div>
+    )
+  })
+}
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <APIData />
     </div>
   );
 }
