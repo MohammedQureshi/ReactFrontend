@@ -20,18 +20,38 @@ const APIData = () => {
   return apiCall.map((apiCall, index) => {
     
     return(
-      <div key={index}>
-        <h1 className="name">{apiCall.firstName} {apiCall.lastName}</h1>
-        <p>Address: {apiCall.addressLine}</p>
-      </div>
+      <tr>
+        <td>{apiCall.firstName}</td>
+        <td>{apiCall.lastName}</td>
+        <td>{apiCall.age}</td>
+        <td>{apiCall.addressLine}</td>
+        <td>{apiCall.gender}</td>
+      </tr>
     )
   })
+}
+
+const UserTable = () => {
+  return(
+    <div>
+      <table className="userTable">
+        <tr>
+          <td>First Name</td>
+          <td>Last Name</td>
+          <td>Age</td>
+          <td>Address</td>
+          <td>Gender</td>
+        </tr>
+        <APIData />
+      </table>
+    </div>
+  )
 }
 
 function App() {
   return (
     <div className="App">
-      <APIData />
+      <UserTable />
     </div>
   );
 }
