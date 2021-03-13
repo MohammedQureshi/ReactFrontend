@@ -40,6 +40,11 @@
   padding: 10px;
 }
 
+.fillArea{
+  background-color: #282c34;
+  color: aliceblue;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
