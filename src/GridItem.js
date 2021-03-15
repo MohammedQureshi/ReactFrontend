@@ -15,7 +15,7 @@ function GridItem  ({apiLinkGrid}) {
   
     useEffect(() => {
       getAPIData();
-    })
+    }, [])
   
     return apiCall.map((apiCall, index) => {
       return(
